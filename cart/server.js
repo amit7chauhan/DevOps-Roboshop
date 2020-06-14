@@ -345,7 +345,7 @@ function calcTax(total) {
 
 function getProduct(sku) {
     return new Promise((resolve, reject) => {
-        request('http://' + catalogueHost + ':8080/product/' + sku, (err, res, body) => {
+        request('http://' + catalogueHost + ':7002/product/' + sku, (err, res, body) => {
             if(err) {
                 reject(err);
             } else if(res.statusCode != 200) {
@@ -386,7 +386,7 @@ redisClient.on('ready', (r) => {
 });
 
 // fire it up!
-const port = process.env.CART_SERVER_PORT || '8080';
+const port = process.env.CART_SERVER_PORT || '7001';
 app.listen(port, () => {
     logger.info('Started on port', port);
 });

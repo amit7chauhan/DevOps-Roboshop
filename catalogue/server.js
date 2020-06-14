@@ -140,7 +140,7 @@ app.get('/search/:text', (req, res) => {
 // set up Mongo
 function mongoConnect() {
     return new Promise((resolve, reject) => {
-        var mongoURL = process.env.MONGO_URL || 'mongodb://mongodb:27017/catalogue';
+        var mongoURL = process.env.MONGO_URL || 'mongodb://localhost:27017/catalogue';
         mongoClient.connect(mongoURL, (error, client) => {
             if(error) {
                 reject(error);
@@ -167,7 +167,7 @@ function mongoLoop() {
 mongoLoop();
 
 // fire it up!
-const port = process.env.CATALOGUE_SERVER_PORT || '8080';
+const port = process.env.CATALOGUE_SERVER_PORT || '7002';
 app.listen(port, () => {
     logger.info('Started on port', port);
 });

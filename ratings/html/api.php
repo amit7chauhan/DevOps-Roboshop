@@ -121,7 +121,7 @@ class RatingsAPI extends API {
     }
 
     private function _dbConnect() {
-        $dsn = getenv('PDO_URL') ? getenv('PDO_URL') : 'mysql:host=mysql;dbname=ratings;charset=utf8mb4';
+        $dsn = getenv('PDO_URL') ? getenv('PDO_URL') : 'mysql:host=localhost;dbname=ratings;charset=utf8mb4';
         $opt = array(
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -142,7 +142,7 @@ class RatingsAPI extends API {
 
     // check sku exists in product catalogue
     private function _checkSku($sku) {
-        $url = getenv('CATALOGUE_URL') ? getenv('CATALOGUE_URL') : 'http://catalogue:8080/';
+        $url = getenv('CATALOGUE_URL') ? getenv('CATALOGUE_URL') : 'http://localhost:7002/';
         $url = $url . 'product/' . $sku;
 
         $opt = array(
